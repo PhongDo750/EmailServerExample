@@ -37,15 +37,6 @@ public class SMTPService {
         props.put("mail.smtps.ssl.trust", "*");
         props.put("mail.smtps.ssl.checkserveridentity", "false");
 
-//        Properties props = new Properties();
-//        props.put("mail.transport.protocol", "smtp");
-//        props.put("mail.smtp.host", "smtp.gmail.com");
-//        props.put("mail.smtp.port", "587");
-//
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");   // bật STARTTLS
-//        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-
         // Tạo session
         Session session = Session.getInstance(props, new Authenticator() {
             @Override

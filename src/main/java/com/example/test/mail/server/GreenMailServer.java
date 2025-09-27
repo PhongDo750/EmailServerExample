@@ -11,13 +11,15 @@ public class GreenMailServer {
     public void start() {
         ServerSetup smtps = ServerSetup.SMTPS;
         ServerSetup imap = ServerSetup.IMAP;
+        ServerSetup pop3 = ServerSetup.POP3;
 
-        GreenMail greenMail = new GreenMail(new ServerSetup[]{smtps, imap});
+        GreenMail greenMail = new GreenMail(new ServerSetup[]{smtps, pop3});
         greenMail.start();
         greenMail.setUser("sender@localhost", "sender", "password");
         greenMail.setUser("recipient@localhost", "recipient", "password");
 
         System.out.println("portSMPTS : " + smtps.getPort());
-        System.out.println("imaps : " + imap.getPort());
+//        System.out.println("imaps : " + imap.getPort());
+        System.out.println("pop3s : " + pop3.getPort());
     }
 }

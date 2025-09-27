@@ -1,6 +1,6 @@
 package com.example.test.mail.controller;
 
-import com.example.test.mail.service.IMAPService;
+import com.example.test.mail.service.POP3Service;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/imap/receivers")
-public class IMAPController {
-    private final IMAPService imapService;
+@RequestMapping("/api/v1/pop3/receivers")
+public class POP3Controller {
+    private final POP3Service pop3Service;
 
     @GetMapping("/inbox")
     public String readInbox(
             @RequestParam String username,
             @RequestParam String password
     ) throws Exception {
-        imapService.readInbox(username, password);
+        pop3Service.readInbox(username, password);
         return "✅ Inbox read!";
     }
 }
