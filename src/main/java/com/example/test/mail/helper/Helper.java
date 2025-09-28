@@ -12,12 +12,15 @@ public class Helper {
     public static String getTextFromMessage(Message message) throws MessagingException, IOException {
         if (message.isMimeType("text/plain")) {
             return message.getContent().toString();
+        } else if (message.isMimeType("text/html")) {
+            return message.getContent().toString();
         } else if (message.isMimeType("multipart/*")) {
             MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
             return getTextFromMimeMultipart(mimeMultipart);
         }
         return "";
     }
+
 
     public static String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws MessagingException, IOException {
         StringBuilder result = new StringBuilder();
