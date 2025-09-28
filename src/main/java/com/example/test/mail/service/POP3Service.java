@@ -2,12 +2,10 @@ package com.example.test.mail.service;
 
 import com.example.test.mail.helper.Helper;
 import jakarta.mail.*;
-import jakarta.mail.internet.MimeMultipart;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.Properties;
 
 @Service
@@ -19,7 +17,7 @@ public class POP3Service {
     @Value("${spring.mail.port.pop3}")
     private String pop3Port;
 
-    public void readInbox(String username, String password) throws MessagingException, IOException {
+    public void readInbox(String username, String password) throws Exception {
         // Cấu hình properties cho POP3
         Properties props = new Properties();
         props.put("mail.store.protocol", "pop3");
@@ -49,6 +47,8 @@ public class POP3Service {
             log.info("📨 From: {}", message.getFrom()[0]);
             log.info("📝 Subject: {}", message.getSubject());
             log.info("📄 Content: {}", Helper.getTextFromMessage(message));
+
+            Helper.saveMessageContent(message, "G:\\testEmail");
         }
 
         inbox.close(false);

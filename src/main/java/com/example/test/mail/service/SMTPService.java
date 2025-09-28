@@ -28,12 +28,12 @@ public class SMTPService {
     public void sendMail(SenderEmail senderEmail, List<MultipartFile> files) throws MessagingException, IOException {
         // Config SMTP
         Properties props = new Properties();
-        props.put("mail.transport.protocol", "smtps");   // 👈 đổi sang smtps
+        props.put("mail.transport.protocol", "smtps");
         props.put("mail.smtps.host", host);
         props.put("mail.smtps.port", port);
 
         props.put("mail.smtps.auth", "true");
-        props.put("mail.smtps.ssl.enable", "true");      // bật implicit TLS
+        props.put("mail.smtps.ssl.enable", "true");
         props.put("mail.smtps.ssl.trust", "*");
         props.put("mail.smtps.ssl.checkserveridentity", "false");
 
